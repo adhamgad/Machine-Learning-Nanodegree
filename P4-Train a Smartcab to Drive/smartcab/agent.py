@@ -12,10 +12,10 @@ class LearningAgent(Agent):
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
         # TODO: Initialize any additional variables here
-        self.discount = 0.8
+        self.discount = 0.7
         self.current_iter = 1
         self.epsilon = 1 
-        self.alpha = 0.2
+        self.alpha = 0.6
         self.q_table = defaultdict(int)
         self.reward = 0
         
@@ -95,7 +95,7 @@ def run():
     # Set up environment and agent
     e = Environment()  # create environment (also adds some dummy traffic)
     a = e.create_agent(LearningAgent)  # create agent
-    e.set_primary_agent(a, enforce_deadline=False)  # set agent to track
+    e.set_primary_agent(a, enforce_deadline=True)  # set agent to track
 
     # Now simulate it
     sim = Simulator(e, update_delay= 0 )  # reduce update_delay to speed up simulation
